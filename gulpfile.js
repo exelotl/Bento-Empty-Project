@@ -940,3 +940,13 @@ gulp.task('build-desktop', ['ogg-only', 'build-web', 'restore-audio'], function 
 gulp.task('run', function (callback) {
     exec('nw ./', {}, function (error, stdout, stderr) {});
 });
+
+gulp.task('transpile-es6', function () {
+    const babel = require('gulp-babel');
+    gulp.src('es6/**/*.js')
+		.pipe(babel({
+			presets: ['env'],
+			plugins: ['babel-plugin-transform-es2015-modules-bento-amd']
+		}))
+		.pipe(gulp.dest('js'));
+});

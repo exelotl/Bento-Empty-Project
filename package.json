@@ -5,9 +5,14 @@
         "name": "Lucky Kat"
     },
     "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-plugin-transform-es2015-modules-bento-amd": "git+https://github.com/geckojsc/babel-plugin-transform-es2015-modules-bento-amd.git",
+        "babel-preset-env": "^1.7.0",
+        "fast-image-size": "*",
         "graceful-fs": "4.1.2",
         "gulp": "3.9.1",
         "gulp-add-src": "0.2.0",
+        "gulp-babel": "^7.0.1",
         "gulp-clean": "0.3.1",
         "gulp-concat": "2.6.0",
         "gulp-exec": "2.1.2",
@@ -23,13 +28,12 @@
         "gulp-usemin": "0.3.8",
         "gulp-watch": "4.3.5",
         "gulp-zip": "3.0.2",
-        "merge-stream": "1.0.0",
         "inquirer": "2.0.0",
-        "jsonfile": "2.2.3",
+        "jimp": "*",
         "json-stable-stringify": "1.0.1",
-        "vinyl": "1.1.1",
+        "jsonfile": "2.2.3",
         "maxrects-packer": "*",
-        "fast-image-size": "*",
-        "jimp": "*"
+        "merge-stream": "1.0.0",
+        "vinyl": "1.1.1"
     }
 }
