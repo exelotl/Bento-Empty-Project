@@ -16,6 +16,7 @@ import Screen from 'bento/screen';
 import Tween from 'bento/tween';
 import LuckyKat from 'entities/luckykatlogo';
 import Globals from 'globals';
+
 var onShow = function () {
     /* Screen starts here */
     var viewport = Bento.getViewport();
@@ -38,5 +39,5 @@ var onShow = function () {
 };
 
 export default new Screen({
-    onShow: onShow
+    onShow
 });

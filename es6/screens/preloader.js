@@ -16,6 +16,7 @@ import Tween from 'bento/tween';
 import LuckyKat from 'entities/luckykatlogo';
 import Globals from 'globals';
 import Localization from 'modules/localization';
+
 var initPostPreloader = function () {
     // hide cordova splashscreen if exists
     if (navigator.splashscreen) {
@@ -25,6 +26,7 @@ var initPostPreloader = function () {
     // Localization language is set after localized json files are loaded
     Localization.setLanguage();
 };
+
 var onShow = function () {
     /* Screen starts here */
     var viewport = Bento.getViewport();
@@ -95,5 +97,5 @@ var onShow = function () {
 };
 
 export default new Screen({
-    onShow: onShow
+    onShow
 });

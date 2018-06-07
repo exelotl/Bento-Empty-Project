@@ -950,3 +950,10 @@ gulp.task('transpile-es6', function () {
 		}))
 		.pipe(gulp.dest('js'));
 });
+
+gulp.task('transpiler', ['transpile-es6'], function () {
+    var watch = require('gulp-watch');
+    watch('es6/**/*.js', function () {
+        gulp.start('transpile-es6');
+    });
+});
