@@ -1,6 +1,6 @@
 // TODO: NEEDS REWRITE
 
-bento.define('onigir/particlesystem', [
+bento.define('onigiri/particlesystem', [
     'bento',
     'bento/utils',
     'onigiri/onigiri'
