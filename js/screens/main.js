@@ -45,17 +45,23 @@ bento.define('screens/main', [
     'use strict';
     var onShow = function () {
         // --- Start Onigiri ---
-        new Onigiri({
+        var onigiri = new Onigiri({
             backgroundColor: '#33ddff',
-            cameraFieldOfView: 45
+            camera: {
+                cameraStyle: 'perspective',
+                perspectiveFieldOfView: 45
+            },
+            shadows: true
         });
+        Bento.objects.attach(onigiri);
 
         // --- Some Lighting ---
         var sun = new Sun({
             color: '#fff',
             directionalIntensity: 0.2,
             ambientIntensity: 0.8,
-            position: new THREE.Vector3(5, 10, 5)
+            position: new THREE.Vector3(5, 10, 5),
+            castShadow: true
         });
         Bento.objects.attach(sun);
 
@@ -73,7 +79,8 @@ bento.define('screens/main', [
             parameters: [
                 10000,
                 10000
-            ]
+            ],
+            receiveShadow: true,
         });
         Bento.objects.attach(floor);
 

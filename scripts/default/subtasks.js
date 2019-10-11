@@ -399,14 +399,14 @@ function replaceWebInWww() {
 
 function uglifyWww(callback) {
     var pump = require('pump');
-    var terser = require('gulp-terser');
+    var uglify = require('gulp-uglify-es').default;
     pump([
         gulp.src([
             './www/js/**/*.js'
         ], {
             base: './'
         }),
-        terser(),
+        uglify(),
         gulp.dest('./')
     ], callback);
 }
