@@ -33,6 +33,7 @@ bento.define('onigiri/onigiri', [
     var backgroundTexture;
     var skyBox;
     var skyCubeMap;
+    var textureCache = {};
 
     //camera parameters
     var cameraStyle;
@@ -363,18 +364,39 @@ bento.define('onigiri/onigiri', [
     Onigiri.getMesh('${1:path}'); // calling this directly means you have to clean up memory yourself with Onigiri.cleanObject3d()!!!
     */
     Onigiri.getMesh = function (meshPath) {
-        if (!Bento.assets.hasMesh || !Bento.assets.getMesh) {
-            Utils.log('Onigiri: MeshManager is missing?!');
-            return;
-        }
         // check if mesh exists
-        if (meshPath || Bento.assets.hasMesh(meshPath)) {
-            return Bento.assets.getMesh(meshPath);
+        var mesh = Bento.assets.getMesh(meshPath);
+        if (mesh) {
+            return THREE.SkeletonUtils.clone(mesh);
         } else {
             if (!meshPath) {
                 Utils.log('Onigiri: mesh path is undefined!');
             } else {
                 Utils.log('Onigiri: mesh does not exist!');
+            }
+        }
+    };
+
+    /* Get a THREE texture by Bento image name. 
+    @snippet Onigiri.getTexture.snippet
+    Onigiri.getTexture('${1:path}');
+    */
+    Onigiri.getTexture = function (name) {
+        var texture = textureCache[name];
+        if (texture) {
+            return texture;
+        } else {
+            if (Bento.assets.hasAsset(name, 'images')) {
+                // make texture and store it
+                var img = Bento.assets.getImage(name);
+                texture = new THREE.Texture(img.image);
+                texture.flipY = false;
+                texture.needsUpdate = true;
+                textureCache[name] = texture;
+                return texture;
+            } else {
+                Utils.log("ERROR: Texture and Image " + name + " could not be found");
+                return null;
             }
         }
     };
