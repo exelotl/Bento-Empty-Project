@@ -9,8 +9,7 @@ bento.define('init', [
     'bento/eventsystem',
     'utils',
     'modules/localization',
-    'onigiri/onigiri',
-    'modules/inlinethreeloaders'
+    'onigiri/onigiri'
 ], function (
     Bento,
     Vector2,
@@ -19,8 +18,7 @@ bento.define('init', [
     EventSystem,
     Utils,
     Localization,
-    Onigiri,
-    InlineThreeLoaders
+    Onigiri
 ) {
     'use strict';
     return function () {
@@ -62,10 +60,6 @@ bento.define('init', [
         clearScreen();
         antiAliasing();
         initLocalization();
-
-        // intercept fbx and gltf loaders to add base64 support
-        InlineThreeLoaders.gltf();
-        InlineThreeLoaders.fbx();
 
         // enable extensions for onigiri
         Onigiri.setup([
